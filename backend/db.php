@@ -6,7 +6,7 @@ $w_p=file_get_contents("https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A000
 
 $host        = "host=127.0.0.1";
 $port        = "port=5432";
-$dbname      = "dbname=DB";
+$dbname      = "dbname=SN";
 $credentials = "user=qibao password=Qingdiyu";
 
 
@@ -34,7 +34,7 @@ foreach($AQIdata as $key=>$item){
         $status_s=$subitem;
       }
     }
-    $query="UPDATE mrt.air_quality 
+    $query="UPDATE air_wea.air 
         SET (aqi,status) = 
         ('$aqi_v','$status_s')
         WHERE sitename= '$site_now'";
@@ -64,7 +64,7 @@ foreach($wpdata as $key=>$item){
           }
       }
     }
-    $query="UPDATE mrt.weather 
+    $query="UPDATE air_wea.weather
         SET (temp,humd,weather) = 
         ('$temp_v','$humd_v','$status_s')
         WHERE stationid= '$site_now'";
@@ -106,7 +106,7 @@ foreach($wpdata as $key=>$item){
     if($status_s==""){
       $status_s="普通";
     }
-    $query="UPDATE mrt.weather 
+    $query="UPDATE air_wea.weather
         SET (temp,humd,weather) = 
         ('$temp_v','$humd_v','$status_s')
         WHERE stationid= '$site_now'";
