@@ -37,7 +37,7 @@ foreach($AQIdata as $key=>$item){
     $query="UPDATE air_wea.air 
         SET (aqi,status) = 
         ('$aqi_v','$status_s')
-        WHERE sitename= '$site_now'";
+        WHERE sid= '$site_now'";
     $res = pg_query($db, $query);
   }
 
@@ -67,7 +67,7 @@ foreach($wpdata as $key=>$item){
     $query="UPDATE air_wea.weather
         SET (temp,humd,weather) = 
         ('$temp_v','$humd_v','$status_s')
-        WHERE stationid= '$site_now'";
+        WHERE sid= '$site_now'";
     $res = pg_query($db, $query);
   }
 
@@ -109,7 +109,7 @@ foreach($wpdata as $key=>$item){
     $query="UPDATE air_wea.weather
         SET (temp,humd,weather) = 
         ('$temp_v','$humd_v','$status_s')
-        WHERE stationid= '$site_now'";
+        WHERE sid= '$site_now'";
     $res = pg_query($db, $query);
   }
 
