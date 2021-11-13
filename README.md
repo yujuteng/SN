@@ -2,10 +2,10 @@
 原定的行程提早結束了，想要在附近逛逛，幫助決定下一個景點小網站。
 
 ### 分工
-- 陳琳瑄 自己打自己的
+- 陳琳瑄 Front-end using ReactJS, Axios
 - 施懿修 Database of spot (include schema design and data colleciton) using python and postgreSQL
 - 沈姿雨 自己打自己的Back-end using Django
-- 鄧鈺儒 自己打自己的Front-end using ReactJS
+- 鄧鈺儒 自己打自己的
 ## Database
 
 - 下載 [PostgreSQL 13](https://www.postgresql.org/download/) 以及 [pdAdmin](https://www.pgadmin.org/) (GUI介面)
@@ -126,10 +126,10 @@ yarn start
 一般情況會自動開啟瀏覽器，若沒有請手動開啟 http://127.0.0.1:3000/ ，看到以下畫面即代表成功開啟前端且前後端連接成功。
 
 #### 查詢選單
-![截圖 2021-10-17 下午10 53 03](https://user-images.githubusercontent.com/56534481/137632819-dfc1e96b-7a0b-4086-92fe-33ec2bd48c66.png)
-#### 車次時刻與適用優惠列表
-![截圖 2021-10-17 下午10 55 38](https://user-images.githubusercontent.com/56534481/137632908-d0b43156-b165-4858-8930-9734e7f4d5ca.png)
-#### 票價試算
-![截圖 2021-10-17 下午10 56 13](https://user-images.githubusercontent.com/56534481/137632935-88a6ca29-d65c-46be-9853-eb09fb4e91f2.png)
+
+#### 推薦景點
+
+#### 排序與細目
+
 
 
