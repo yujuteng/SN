@@ -378,45 +378,34 @@ weather: "晴時多雲偶陣雨",
 },
 ]
 
-const SuggestList = () => {
+const SuggestList = ({suggestList}) => {
   const [tableList , setTableList] = useState([])
 
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/getData')
-    .then((res) => { 
-      setTableList(res.data)
-      console.log(tableList)
-    })
-    .catch((error) => { console.log(error); console.log('api/getData') })
-  },[])
-
-  const [filteredInfo, setFilteredInfo] = useState(null)
-const [sortedInfo, setSortedInfo] = useState(null)
 
 
-const handleChange = (pagination, filters, sorter) => {
-  console.log('Various parameters', pagination, filters, sorter);
-  setFilteredInfo(filters);
-  setSortedInfo(filters);
-};
+// const handleChange = (pagination, filters, sorter) => {
+//   console.log('Various parameters', pagination, filters, sorter);
+//   setFilteredInfo(filters);
+//   setSortedInfo(filters);
+// };
 
-const clearFilters = () => {
-  setFilteredInfo(null)
-};
+// const clearFilters = () => {
+//   setFilteredInfo(null)
+// };
 
-const clearAll = () => {
-  setFilteredInfo(null);
-  setSortedInfo(null);
-};
+// const clearAll = () => {
+//   setFilteredInfo(null);
+//   setSortedInfo(null);
+// };
 
-const setAgeSort = () => {
-  this.setState({
-    sortedInfo: {
-      order: 'descend',
-      columnKey: 'age',
-    },
-  });
-};
+// const setAgeSort = () => {
+//   this.setState({
+//     sortedInfo: {
+//       order: 'descend',
+//       columnKey: 'age',
+//     },
+//   });
+// };
 
 
 

@@ -21,6 +21,16 @@ const MenuSet = ( ) => {
     const [tag, setTag] = useState('')
     const [check, setCheck] = useState(false)
     const [show, setShow] = useState(false)
+    const [suggestList, setSuggestList] = useState([])
+
+    useEffect(() => {
+        fetch("../db.php")
+        // axios.get('http://localhost:8000/api/db.php')
+        .then((res) => { 
+          console.log("db.php api ok"+res);
+        })
+        .catch((error) => { console.log(error); console.log('DB/PHP/QQ') })
+      },[])
 
     useEffect(() => {
         axios.post('http://127.0.0.1:8000/api/spots/search', {
@@ -30,8 +40,9 @@ const MenuSet = ( ) => {
           "tag": tag
         })
         .then((res) => { 
-          setShow(true);
-          console.log("give data to backend");
+        //   setShow(true);
+            setSuggestList(res.data);
+          console.log("spots/search api ok");
         })
         .catch((error) => { console.log(error); console.log('api/spots/search') })
       },[check])
@@ -92,7 +103,7 @@ const MenuSet = ( ) => {
                     <div className="check" onClick={handelCheck}><Btm/></div>
                 </div>
             </div>
-            {show? <SuggestList station={station} />:<></>}
+            {show? <SuggestList suggestList={suggestList} />:<></>}
         </div>
     )
 }
