@@ -20,8 +20,6 @@ class Mrt_Line(models.Model):
 
 class Mrt_Station(models.Model):
     sid = models.TextField(primary_key=True)
-    #line = models.TextField()
-    #name = models.TextField()
     line = models.ForeignKey(Mrt_Line, on_delete=models.CASCADE, db_column='line')
     name = models.ForeignKey('Mrt_Pos', on_delete=models.CASCADE, db_column='name')
 
@@ -50,13 +48,13 @@ class Mrt_Move(models.Model):
     station2 = models.ForeignKey(Mrt_Pos, on_delete=models.CASCADE, db_column='station2', related_name='s2')
     fare = models.IntegerField()
     time = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
 
     class Meta:
         db_table = 'mrt"."MRT_Move'
-        unique_together = (('station1', 'station2'),)
     
     def __str__(self):
-        return f'{self.station1}2{self.station2}_move'
+        return f'{self.station1}2{self.station2}'
 
 class Air(models.Model):
     sid = models.TextField(primary_key=True)
@@ -97,9 +95,9 @@ class Spot_Info(models.Model):
         return self.name
 
 class Spot_Loc(models.Model):
-    sid = models.ForeignKey('Spot_Info', on_delete=models.CASCADE, db_column='sid', primary_key=True)
+    sid = models.ForeignKey(Spot_Info, on_delete=models.CASCADE, db_column='sid', primary_key=True)
     distance = models.FloatField()
-    mrt = models.ForeignKey('Mrt_Pos', null=True, on_delete=models.SET_NULL, db_column='mrt')
+    mrt = models.ForeignKey(Mrt_Pos, null=True, on_delete=models.SET_NULL, db_column='mrt')
 
     class Meta:
         db_table = 'spot"."spot_locate'
@@ -108,12 +106,12 @@ class Spot_Loc(models.Model):
         return f'{self.id}_{self.mrt}'
 
 class Spot_Tag(models.Model):
-    sid = models.ForeignKey('Spot_Info', on_delete=models.CASCADE, db_column='sid')
+    sid = models.ForeignKey(Spot_Info, on_delete=models.CASCADE, db_column='sid')
     tag = models.TextField()
+    id = models.IntegerField(primary_key=True)
 
     class Meta:
         db_table = 'spot"."spot_tag'
-        unique_together = (('id', 'tag'),)
 
     def __str__(self):
-        return f'{self.id}_{self.tag}'
+        return f'{self.sid}_{self.tag}'
