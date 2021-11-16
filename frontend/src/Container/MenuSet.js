@@ -16,7 +16,7 @@ import axios from 'axios';
 
 const MenuSet = ( ) => {
     const [station, setStation] = useState(["板南","市政府"])
-    const [time, setTime] = useState(0)
+    const [time, setTime] = useState(10)
     const [transfer, setTransfer] = useState(false)
     const [tag, setTag] = useState([])
     const [check, setCheck] = useState(false)
@@ -46,9 +46,7 @@ const MenuSet = ( ) => {
           "tag":tag
         })
         .then((res) => { 
-        //   setShow(true);
           setReturnData(res.data);
-          console.log(res)
           console.log(userInput);
           console.log("spots/search api ok");
         })
@@ -59,8 +57,6 @@ const MenuSet = ( ) => {
         if (tag.length===0) {
             alert("請選取景點類別")
         }else{
-            console.log("按了check!")
-            console.log("check: "+check)
             setCheck(!check)
             setShow(true)
         }
@@ -114,7 +110,6 @@ const MenuSet = ( ) => {
                 </div>
             </div>
             {show? <SuggestList returnData={returnData} />:<></>}
-            <p>{returnData}</p>
         </div>
     )
 }

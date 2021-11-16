@@ -547,25 +547,28 @@ const columns = [
     title: '景點名稱',
     dataIndex: 'nameInfo',
     key: 'nameInfo',
-    render: nameInfo => <a href={nameInfo.websiteURL} target="_blank">{nameInfo.sname}</a>,
+    render: nameInfo => <a href={nameInfo.websiteURL} target="_blank">{nameInfo.sname}</a>
   },
   {
     title: '靠近的捷運站',
     dataIndex: 'mrtInfo',
     key: 'mrtInfo',
-    render: mrtInfo => {
-        <span><font>{mrtInfo.mrtLine}</font> / {mrtInfo.mrt}</span>
-    }
+    render: mrtInfo => 
+        <>
+          {mrtInfo.mrtLine.map(item=>{return (<font color = {colorSelect(item)}>{item+"/"}</font>) })}{mrtInfo.mrt}</>
+        // <span>{mrtInfo.mrt}</span>          
+          // <font>{mrtInfo.mrtLine}</font>
+  
 
   },
   {
-    title: '轉乘時間',
+    title: '時間',
     dataIndex: 'time',
     key: 'time',
     sorter: {
       compare: (a, b) => a.time - b.time,
     },
-    render: text => <>{text+ ' 分'}</>,
+    render: text => <>{text+ ' 分鐘'}</>,
   },
   {
     title: '票價(元)',
@@ -670,7 +673,6 @@ const columns = [
     <div>
         <Table
         columns={columns}
-        // dataSource={returnData}
         dataSource={returnData}
         // size="middle"
         // dataSource={tableList} Final
