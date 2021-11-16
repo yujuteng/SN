@@ -49,6 +49,7 @@ const NearStation = ({setStation}) => {
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/stations')
         .then((res) => { 
+            console.log(res)
             setStationList(res.data)
             console.log(stationList)
         })

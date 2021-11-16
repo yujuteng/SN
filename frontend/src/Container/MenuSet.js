@@ -15,13 +15,13 @@ import { SearchOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 const MenuSet = ( ) => {
-    const [station, setStation] = useState('板南,市政府')
+    const [station, setStation] = useState(["板南","市政府"])
     const [time, setTime] = useState(0)
     const [transfer, setTransfer] = useState(false)
-    const [tag, setTag] = useState('')
+    const [tag, setTag] = useState([])
     const [check, setCheck] = useState(false)
     const [show, setShow] = useState(false)
-    const [suggestList, setSuggestList] = useState([])
+    const [returnData, setReturnData] = useState([])
 
     useEffect(() => {
         fetch("../db.php")
@@ -33,31 +33,41 @@ const MenuSet = ( ) => {
       },[])
 
     useEffect(() => {
+        let userInput = {
+            "nearStation": station,
+            "time": time,
+            "transfer": transfer,	
+            "tag": tag
+        }
         axios.post('http://127.0.0.1:8000/api/spots/search', {
-          "nearStation": station,
-          "time": time,
-          "transfer": transfer,	
-          "tag": tag
+          "nearStation":station,
+          "time":time,
+          "transfer":transfer,	
+          "tag":tag
         })
         .then((res) => { 
         //   setShow(true);
-            setSuggestList(res.data);
+          setReturnData(res.data);
+          console.log(res)
+          console.log(userInput);
           console.log("spots/search api ok");
         })
-        .catch((error) => { console.log(error); console.log('api/spots/search') })
+        .catch((error) => { console.log(error); console.log('api/spots/search~~~GG') })
       },[check])
 
     const handelCheck = () => {
-        if (tag==="") {
+        if (tag.length===0) {
             alert("請選取景點類別")
         }else{
+            console.log("按了check!")
+            console.log("check: "+check)
             setCheck(!check)
             setShow(true)
         }
     }
     const Btm =() =>{
         return(
-            <Button type="default" shape="round" icon={<SearchOutlined />} size="large">查詢</Button>
+            <Button onClick={()=>handelCheck()} type="default" shape="round" icon={<SearchOutlined />} size="large">查詢</Button>
         )
     } 
     
@@ -100,10 +110,11 @@ const MenuSet = ( ) => {
                 </div>
     
                 <div className="wrapper_icon">
-                    <div className="check" onClick={handelCheck}><Btm/></div>
+                    <div className="check" ><Btm/></div>
                 </div>
             </div>
-            {show? <SuggestList suggestList={suggestList} />:<></>}
+            {show? <SuggestList returnData={returnData} />:<></>}
+            <p>{returnData}</p>
         </div>
     )
 }
