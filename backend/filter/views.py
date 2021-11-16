@@ -34,8 +34,7 @@ def spot_search(request):
     
     if request.method == 'POST':
         try:
-            start_s = request.data['nearStation']
-            start_s = (str(start_s).split(','))[-1]
+            start_s = request.data['nearStation'][-1]
             limit = int(request.data['time'])
             transfer = bool(request.data['transfer'])
             tags = request.data['tag']
