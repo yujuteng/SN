@@ -2,7 +2,7 @@ import { Table, Tag, Radio, Space, Button,  Card, Modal} from 'antd';
 import { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import './detail.css'
-import { EnvironmentOutlined } from '@ant-design/icons';
+import { EnvironmentOutlined, FileExcelOutlined } from '@ant-design/icons';
 
 const returnDataHardCode = [
   {
@@ -130,376 +130,6 @@ const returnDataHardCode = [
       "weather": "-",
       "key": 4
   }]
-const data = [
-  {
-    key: '1',
-    sname: '中正紀念堂',
-    mrt: '淡水信義/中正紀念堂',
-    time: '30 mins',
-    money: '20台幣',
-    tags: ['nice', 'developer'],
-    aqi: ["205","😢"],
-    temperature: "22-25C",
-    weather: "晴時多雲偶陣雨",
-  },
-  {
-    key: '2',
-    sname: '中正紀念堂',
-    mrt: '淡水信義/象山',
-    time: '30 mins',
-    tags: ['溫泉', '古蹟'],
-    aqi: ["15","🤗"],
-    temperature: "12-55C",
-    weather: "陣雨",
-  },
-  {
-    key: '3',
-    sname: '中正紀念堂',
-    mrt: '淡水信義/象山',
-    time: '30 mins',
-    tags: ['溫泉', '古蹟'],
-    aqi: ["15","🤗"],
-    temperature: "12-55C",
-    weather: "陣雨",
-  },
-  {
-    key: '4',
-    sname: '中正紀念堂',
-    mrt: '淡水信義/中正紀念堂',
-    time: '30 mins',
-    tags: ['溫泉', '古蹟'],
-    aqi: ["15","🤗"],
-    temperature: "12-55C",
-    weather: "陣雨",
-  },
-  {
-    key: '5',
-    sname: '中正紀念堂',
-    mrt: '淡水信義/中正紀念堂',
-    time: '30 mins',
-    tags: ['溫泉', '古蹟'],
-    aqi: ["15","🤗"],
-    temperature: "12-55C",
-    weather: "陣雨",
-  },
- 
-];
-
-
-const newData = [
-  {
-    key: '1',
-    nameInfo:{
-      sname: '中正紀念堂',
-      websiteURL: "https://google.com",
-    },
-    mrtInfo:{
-      mrt: '中正紀念堂',
-      mrtLine: '淡水信義'
-    },
-    transfer: true,
-    time: 30,
-    fare: 20,
-    detail:{
-      sname: "中正紀念堂",
-      pictureURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chiang_Kai-shek_memorial_amk.jpg/2560px-Chiang_Kai-shek_memorial_amk.jpg",
-      descrip: "台灣街區．．．",
-      addr: null,
-      openTime: "全年開放",
-    },
-    tag: ["藝術", "運動", "休閒", "風景",  "博物館"],
-    aqi: 205,
-    aqiDescrip: "良好",
-    temp: 22,
-    weather: "晴時多雲偶陣雨",
-},
-{
-  key: '2',
-  nameInfo:{
-    sname: '象山親山步道',
-    websiteURL: "https://www.travel.taipei/zh-tw/attraction/details/185",
-  },
-  mrtInfo:{
-    mrt: '象山',
-    mrtLine: '淡水信義',
-  },
-  transfer: true,
-  time: 40,
-  fare: 30,
-  detail:{
-    sname: "象山親山步道",
-    pictureURL: "https://www.travel.taipei/image/182750/1024x768",
-    descrip: "象山因外形似象頭而得名，位於臺北盆地東南方的信義區，與虎山地質相同主要由砂岩組成，因造山作用步道中可見黃褐色陡峭的岩壁與巨石，加上自然環境生物、鳥類種類繁多，使得整座山如同一座天然生態樂園般，成為民眾接近淺山、享受戶外綠林悠閒時光的好去處。",
-    addr: "臺北市信義區南港山系西北側山麓",
-    openTime: "全年開放",
-  },
-  tag: ["宗教", "歷史", "夜市", "商圈"],
-  aqi: 100,
-  aqiDescrip: "良好",
-  temp: 22,
-  weather: "晴時多雲偶陣雨",
-},
-{
-  key: '3',
-  nameInfo:{
-    sname: '中正紀念堂',
-    websiteURL: "https://google.com",
-  },
-  mrtInfo:{
-    mrt: '中正紀念堂',
-    mrtLine: '淡水信義'
-  },
-  transfer: true,
-  time: 30,
-  fare: 20,
-  detail:{
-    sname: "中正紀念堂",
-    pictureURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chiang_Kai-shek_memorial_amk.jpg/2560px-Chiang_Kai-shek_memorial_amk.jpg",
-    descrip: "台灣街區．．．",
-    addr: null,
-    openTime: "全年開放",
-  },
-  tag: ["藝術", "運動", "休閒", "風景",  "博物館"],
-  aqi: 205,
-  aqiDescrip: "良好",
-  temp: 22,
-  weather: "晴時多雲偶陣雨",
-},
-{
-key: '4',
-nameInfo:{
-  sname: '象山親山步道',
-  websiteURL: "https://www.travel.taipei/zh-tw/attraction/details/185",
-},
-mrtInfo:{
-  mrt: '象山',
-  mrtLine: '淡水信義',
-},
-transfer: true,
-time: 40,
-fare: 30,
-detail:{
-  sname: "象山親山步道",
-  pictureURL: "https://www.travel.taipei/image/182750/1024x768",
-  descrip: "象山因外形似象頭而得名，位於臺北盆地東南方的信義區，與虎山地質相同主要由砂岩組成，因造山作用步道中可見黃褐色陡峭的岩壁與巨石，加上自然環境生物、鳥類種類繁多，使得整座山如同一座天然生態樂園般，成為民眾接近淺山、享受戶外綠林悠閒時光的好去處。",
-  addr: "臺北市信義區南港山系西北側山麓",
-  openTime: "全年開放",
-},
-tag: ["宗教", "歷史", "夜市", "商圈"],
-aqi: 100,
-aqiDescrip: "良好",
-temp: 22,
-weather: "晴時多雲偶陣雨",
-},
-{
-  key: '5',
-  nameInfo:{
-    sname: '中正紀念堂',
-    websiteURL: "https://google.com",
-  },
-  mrtInfo:{
-    mrt: '中正紀念堂',
-    mrtLine: '淡水信義'
-  },
-  transfer: true,
-  time: 30,
-  fare: 20,
-  detail:{
-    sname: "中正紀念堂",
-    pictureURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chiang_Kai-shek_memorial_amk.jpg/2560px-Chiang_Kai-shek_memorial_amk.jpg",
-    descrip: "台灣街區．．．",
-    addr: null,
-    openTime: "全年開放",
-  },
-  tag: ["藝術", "運動", "休閒", "風景",  "博物館"],
-  aqi: 205,
-  aqiDescrip: "良好",
-  temp: 22,
-  weather: "晴時多雲偶陣雨",
-},
-{
-key: '6',
-nameInfo:{
-  sname: '象山親山步道',
-  websiteURL: "https://www.travel.taipei/zh-tw/attraction/details/185",
-},
-mrtInfo:{
-  mrt: '象山',
-  mrtLine: '淡水信義',
-},
-transfer: true,
-time: 40,
-fare: 30,
-detail:{
-  sname: "象山親山步道",
-  pictureURL: "https://www.travel.taipei/image/182750/1024x768",
-  descrip: "象山因外形似象頭而得名，位於臺北盆地東南方的信義區，與虎山地質相同主要由砂岩組成，因造山作用步道中可見黃褐色陡峭的岩壁與巨石，加上自然環境生物、鳥類種類繁多，使得整座山如同一座天然生態樂園般，成為民眾接近淺山、享受戶外綠林悠閒時光的好去處。",
-  addr: "臺北市信義區南港山系西北側山麓",
-  openTime: "全年開放",
-},
-tag: ["宗教", "歷史", "夜市", "商圈"],
-aqi: 100,
-aqiDescrip: "良好",
-temp: 22,
-weather: "晴時多雲偶陣雨",
-},
-{
-  key: '7',
-  nameInfo:{
-    sname: '中正紀念堂',
-    websiteURL: "https://google.com",
-  },
-  mrtInfo:{
-    mrt: '中正紀念堂',
-    mrtLine: '淡水信義'
-  },
-  transfer: true,
-  time: 30,
-  fare: 20,
-  detail:{
-    sname: "中正紀念堂",
-    pictureURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chiang_Kai-shek_memorial_amk.jpg/2560px-Chiang_Kai-shek_memorial_amk.jpg",
-    descrip: "台灣街區．．．",
-    addr: null,
-    openTime: "全年開放",
-  },
-  tag: ["藝術", "運動", "休閒", "風景",  "博物館"],
-  aqi: 205,
-  aqiDescrip: "良好",
-  temp: 22,
-  weather: "晴時多雲偶陣雨",
-},
-{
-key: '8',
-nameInfo:{
-  sname: '象山親山步道',
-  websiteURL: "https://www.travel.taipei/zh-tw/attraction/details/185",
-},
-mrtInfo:{
-  mrt: '象山',
-  mrtLine: '淡水信義',
-},
-transfer: true,
-time: 40,
-fare: 30,
-detail:{
-  sname: "象山親山步道",
-  pictureURL: "https://www.travel.taipei/image/182750/1024x768",
-  descrip: "象山因外形似象頭而得名，位於臺北盆地東南方的信義區，與虎山地質相同主要由砂岩組成，因造山作用步道中可見黃褐色陡峭的岩壁與巨石，加上自然環境生物、鳥類種類繁多，使得整座山如同一座天然生態樂園般，成為民眾接近淺山、享受戶外綠林悠閒時光的好去處。",
-  addr: "臺北市信義區南港山系西北側山麓",
-  openTime: "全年開放",
-},
-tag: ["宗教", "歷史", "夜市", "商圈"],
-aqi: 100,
-aqiDescrip: "良好",
-temp: 22,
-weather: "晴時多雲偶陣雨",
-},
-{
-  key: '9',
-  nameInfo:{
-    sname: '中正紀念堂',
-    websiteURL: "https://google.com",
-  },
-  mrtInfo:{
-    mrt: '中正紀念堂',
-    mrtLine: '淡水信義'
-  },
-  transfer: true,
-  time: 30,
-  fare: 20,
-  detail:{
-    sname: "中正紀念堂",
-    pictureURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chiang_Kai-shek_memorial_amk.jpg/2560px-Chiang_Kai-shek_memorial_amk.jpg",
-    descrip: "台灣街區．．．",
-    addr: null,
-    openTime: "全年開放",
-  },
-  tag: ["藝術", "運動", "休閒", "風景",  "博物館"],
-  aqi: 205,
-  aqiDescrip: "良好",
-  temp: 22,
-  weather: "晴時多雲偶陣雨",
-},
-{
-key: '10',
-nameInfo:{
-  sname: '象山親山步道',
-  websiteURL: "https://www.travel.taipei/zh-tw/attraction/details/185",
-},
-mrtInfo:{
-  mrt: '象山',
-  mrtLine: '淡水信義',
-},
-transfer: true,
-time: 40,
-fare: 30,
-detail:{
-  sname: "象山親山步道",
-  pictureURL: "https://www.travel.taipei/image/182750/1024x768",
-  descrip: "象山因外形似象頭而得名，位於臺北盆地東南方的信義區，與虎山地質相同主要由砂岩組成，因造山作用步道中可見黃褐色陡峭的岩壁與巨石，加上自然環境生物、鳥類種類繁多，使得整座山如同一座天然生態樂園般，成為民眾接近淺山、享受戶外綠林悠閒時光的好去處。",
-  addr: "臺北市信義區南港山系西北側山麓",
-  openTime: "全年開放",
-},
-tag: ["宗教", "歷史", "夜市", "商圈"],
-aqi: 100,
-aqiDescrip: "良好",
-temp: 22,
-weather: "晴時多雲偶陣雨",
-},
-{
-  key: '11',
-  nameInfo:{
-    sname: '中正紀念堂',
-    websiteURL: "https://google.com",
-  },
-  mrtInfo:{
-    mrt: '中正紀念堂',
-    mrtLine: '淡水信義'
-  },
-  transfer: true,
-  time: 30,
-  fare: 20,
-  detail:{
-    sname: "中正紀念堂",
-    pictureURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chiang_Kai-shek_memorial_amk.jpg/2560px-Chiang_Kai-shek_memorial_amk.jpg",
-    descrip: "台灣街區．．．",
-    addr: null,
-    openTime: "全年開放",
-  },
-  tag: ["藝術", "運動", "休閒", "風景",  "博物館"],
-  aqi: 205,
-  aqiDescrip: "良好",
-  temp: 22,
-  weather: "晴時多雲偶陣雨",
-},
-{
-key: '12',
-nameInfo:{
-  sname: '象山親山步道',
-  websiteURL: "https://www.travel.taipei/zh-tw/attraction/details/185",
-},
-mrtInfo:{
-  mrt: '象山',
-  mrtLine: '淡水信義',
-},
-transfer: true,
-time: 40,
-fare: 30,
-detail:{
-  sname: "象山親山步道",
-  pictureURL: "https://www.travel.taipei/image/182750/1024x768",
-  descrip: "象山因外形似象頭而得名，位於臺北盆地東南方的信義區，與虎山地質相同主要由砂岩組成，因造山作用步道中可見黃褐色陡峭的岩壁與巨石，加上自然環境生物、鳥類種類繁多，使得整座山如同一座天然生態樂園般，成為民眾接近淺山、享受戶外綠林悠閒時光的好去處。",
-  addr: "臺北市信義區南港山系西北側山麓",
-  openTime: "全年開放",
-},
-tag: ["宗教", "歷史", "夜市", "商圈"],
-aqi: 100,
-aqiDescrip: "良好",
-temp: 22,
-weather: "晴時多雲偶陣雨",
-},
-]
 
 const SuggestList = ({returnData}) => {
   const [tableList , setTableList] = useState([])
@@ -541,13 +171,18 @@ const colorSelect = (input)=>{
   return finalColor
 }
 
+const handleTemperature =(input)=>{
+  if (input>=30) return "red"
+  else if (input>19 && input<30) return "green"
+  else if (input<20) return "blue"
+}
 
 const columns = [
   {
     title: '景點名稱',
     dataIndex: 'nameInfo',
     key: 'nameInfo',
-    render: nameInfo => <a href={nameInfo.websiteURL} target="_blank">{nameInfo.sname}</a>
+    render: nameInfo => (nameInfo.websiteURL)===""?<>{nameInfo.sname}</>:<a href={nameInfo.websiteURL} target="_blank">{nameInfo.sname}</a>
   },
   {
     title: '靠近的捷運站',
@@ -555,11 +190,7 @@ const columns = [
     key: 'mrtInfo',
     render: mrtInfo => 
         <>
-          {mrtInfo.mrtLine.map(item=>{return (<font color = {colorSelect(item)}>{item+"/"}</font>) })}{mrtInfo.mrt}</>
-        // <span>{mrtInfo.mrt}</span>          
-          // <font>{mrtInfo.mrtLine}</font>
-  
-
+          {mrtInfo.mrtLine.map(item=>{return (<font color = {colorSelect(item)}>{item+" / "}</font>) })}{mrtInfo.mrt}</>
   },
   {
     title: '時間',
@@ -585,11 +216,16 @@ const columns = [
     sorter: {
       compare: (a, b) => a.aqi - b.aqi,
     },
-    // render: () => (
-    //     <p color = {aqi > 100?'red':'green'}>
-    //         {aqi}
-    //         <p/>
-    //     ),
+    render: aqi => <p color = {aqi > 100?'red':'green'}>{aqi}</p>
+  },  
+  {
+    title: ':)',
+    dataIndex: 'aqiDescrip',
+    key: 'aqiDescrip',
+    sorter: {
+      compare: (a, b) => a.aqiDescrip - b.aqiDescrip,
+    },
+    render: aqiDescrip => <p >{aqiDescrip}</p>
   },
   {
     title: '溫度（C）',
@@ -598,7 +234,8 @@ const columns = [
     sorter: {
       compare: (a, b) => a.temperature - b.temperature,
     },
-    // render: int => <a> {int +'度'} <a/>,
+    render: temperature => temperature==="-"?<></>:<font color={handleTemperature(temperature)}> {temperature +'度'} </font>
+    
   },
   {
     title: '氣象描述',
@@ -647,12 +284,13 @@ const columns = [
     <Button onClick={()=>{
       return(
         Modal.info( {
-          icon: <EnvironmentOutlined />,
+          icon: <EnvironmentOutlined  style={{ fontSize: '300%'}}/>,
           title: '',
           width: '800px',
           content: (
             <div className="detailInfo">
-              <img className="picUrl" src={detail.pictureURL}></img>
+              {(detail.pictureURL==="")?<FileExcelOutlined left style={{ fontSize: '660%'}} />:
+                <img className="picUrl" src={detail.pictureURL}></img>}
               <div className="Infowrapper">
                 <h1>{detail.sname}</h1>  
                 <p>{detail.openTime}</p>

@@ -62,8 +62,8 @@ const NearStation = ({setStation}) => {
       }
     return (
         <Cascader  
-            size="large"
-            style={{ width: '120%' }}
+            // size="large"
+            style={{ width: '100%' }}
             defaultValue={['板南', '市政府']}
             options={stationList}
             onChange={handleChange}
