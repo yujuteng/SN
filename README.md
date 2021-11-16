@@ -1,5 +1,6 @@
 # Spot Next（SN）
 原定的行程提早結束了，想要在附近逛逛，但不知道有什麼地方能去？
+
 只要輸入你指定的條件，Spot Next 就可以幫助你決定下一個景點要去哪裡！
 
 ## 分工
@@ -27,6 +28,7 @@
 - **API endpoint**: http://127.0.0.1:8000/api
 - **兩個接口**
     >GET /stations
+    
     >POST /spots/search
 
 
