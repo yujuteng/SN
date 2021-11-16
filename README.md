@@ -1,11 +1,14 @@
 # Spot Next（SN）
-原定的行程提早結束了，想要在附近逛逛，幫助決定下一個景點小網站。
+原定的行程提早結束了，想要在附近逛逛，但不知道有什麼地方能去？
 
-### 分工
+只要輸入你指定的條件，Spot Next 就可以幫助你決定下一個景點要去哪裡！
+
+## 分工
 - 陳琳瑄 Front-end using ReactJS, Axios
 - 施懿修 Database of spot (include schema design and data colleciton) using python and postgreSQL
 - 沈姿雨 自己打自己的Back-end using Django
-- 鄧鈺儒 自己打自己的
+- 鄧鈺儒 Back-end using python and Django, Database of mrt (include schema design and data colleciton) using python and postgreSQL
+
 ## Database
 
 - 下載 [PostgreSQL 13](https://www.postgresql.org/download/) 以及 [pdAdmin](https://www.pgadmin.org/) (GUI介面)
@@ -21,14 +24,13 @@
 
 
 ### API
-- **討論文件**：https://hackmd.io/_vPVxhaGRT6TIeWEMzvgWA
+
 - **API endpoint**: http://127.0.0.1:8000/api
-- **三個接口**
+- **兩個接口**
     >GET /stations
+    
+    >POST /spots/search
 
-    >POST /timetable/search
-
-    >POST /ticket/search
 
 ## Backend
 
@@ -37,19 +39,19 @@
 ```shell
 # for mac
 cd backend
-python3 -m venv tutorial-env #建立虛擬環境 #-m: module-name
-source tutorial-env/bin/activate #啟動虛擬環境 for mac
+python3 -m venv env #建立虛擬環境 #-m: module-name
+source env/bin/activate #啟動虛擬環境 for mac
 ```
 
 ```shell
 # for windows
 cd backend
-python3 -m venv tutorial-env #建立虛擬環境 #-m: module-name
-tutorial-env\Scripts\activate.bat #啟動虛擬環境 for windows
+python -m venv env #建立虛擬環境 #-m: module-name
+env\Scripts\activate.bat #啟動虛擬環境 for windows
 ```
 
-成功的話，command prompt 前面應該會多出 `(tutorial-env)` 的字樣，代表已經進入這個虛擬環境。如果未來你想退出這個虛擬環境，可以輸入 `deactivate`。
-接著下載所需套件，需要的套件與版本已定義在 `requirements.txt`，下載完輸入`pip list`檢查所有用 `pip` 下載的套件。
+成功的話，command prompt 前面應該會多出 `(env)` 的字樣，代表已經進入這個虛擬環境。如果未來想退出這個虛擬環境，可以輸入 `deactivate`。
+接著下載所需套件，需要的套件與版本已定義在 `requirements.txt`，下載完可以輸入`pip list`檢查所有用 `pip` 下載的套件。
 
 ```shell
 python -m pip install --upgrade pip #pip更新至最新版本
@@ -73,8 +75,6 @@ sqlparse            0.4.1
 ```
 
 安裝完套件後複製 `.env.example` 的內容到 `.env`。
-
->`.env`裡存的是環境變數，裡面通常會放一些機密資訊（如 `SECRET_KEY`、資料庫資訊等），這種檔案通常不會傳上版本控制系統（如 Github），但此為教學專案為了方便講解上傳，同學們實作專案時記得避免。
 
 ```shell
 # for mac
@@ -103,7 +103,7 @@ python manage.py runserver
 ```
 
 用瀏覽器打開  http://127.0.0.1:8000/api/stations ，如果有順利拿到資源表示後端起成功。
-![](img/api.png)
+
 
 ## Frontend
 
