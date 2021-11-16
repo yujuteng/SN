@@ -4,34 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// const contactPHP=()=>{                          //$(document).ready(function(){ });
-//   $.ajax({
-//     url: 'phant.php',    //relative or absolute paths based on http
-//     //type: 'POST',                              //method
-//     //data:{id:123}, 
-//     dataType: 'json',
-//   });
-//   console.log("Hello!!");  
-// }
-// contactPHP();
-
-// useEffect(() => {
-//   fetch("https://api.example.com/items")
-//     .then(res => res.json())
-//     .then(
-//       (result) => {
-//         setIsLoaded(true);
-//         setItems(result);
-//       },
-//       // Note: it's important to handle errors here
-//       // instead of a catch() block so that we don't swallow
-//       // exceptions from actual bugs in components.
-//       (error) => {
-//         setIsLoaded(true);
-//         setError(error);
-//       }
-//     )
-// }, [])
 ReactDOM.render(
   <React.StrictMode>
     <App />

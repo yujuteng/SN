@@ -59,13 +59,13 @@
   margin-top: 5px;
 }
 .header_inline{
-  /* color: #dadee7; */
   color: #282c34;
   height: 70px;
   width: auto;
   font-size: 60px;
   margin-left: 10px;
   margin-top: 5px;
+  padding-right: 15px;
   /* font-family: 'Saira Condensed', sans-serif; */
   /* font-family: 'Orbitron', sans-serif; */
   /* font-family: 'Montserrat Alternates', sans-serif; */

@@ -59,10 +59,6 @@ const data = [
 ];
 
 
-// const transferDS= (input)=>{
-//   cosnt tempArray = []
-//   input.map()
-// }
 const newData = [
   {
     key: '1',
@@ -406,7 +402,17 @@ const SuggestList = ({suggestList}) => {
 //     },
 //   });
 // };
+const colorSelect = (input)=>{
+  let finalColor = "blue"
+  if (input==="淡水信義") finalColor = "red"
+  else if (input==="松山新店") finalColor = "green"
+  else if (input==="文湖") finalColor = "brown"
+  else if (input==="中和新蘆") finalColor = "orange"
+  else if (input==="環狀") finalColor = "yellow"
+  else finalColor = "blue";
 
+  return finalColor
+}
 
 
 const columns = [
@@ -414,14 +420,16 @@ const columns = [
     title: '景點名稱',
     dataIndex: 'nameInfo',
     key: 'nameInfo',
-    render: nameInfo => <a href={nameInfo.websiteURL}>{nameInfo.sname}</a>,
+    render: nameInfo => <a href={nameInfo.websiteURL} target="_blank">{nameInfo.sname}</a>,
   },
   {
     title: '靠近的捷運站',
     dataIndex: 'mrtInfo',
     key: 'mrtInfo',
-    render: mrtInfo => 
-      <span><font color="red">{mrtInfo.mrtLine}</font> / {mrtInfo.mrt}</span>
+    render: mrtInfo => {
+        <span><font color={colorSelect(mrtInfo.mrtLine)}>{mrtInfo.mrtLine}</font> / {mrtInfo.mrt}</span>
+    }
+
   },
   {
     title: '轉乘時間',
