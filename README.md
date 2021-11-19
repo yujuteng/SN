@@ -90,7 +90,7 @@ copy .env.example .env
 
 ```shell
 SECRET_KEY={aaaaaaaaa}
-DEBUG=True
+DEBUG=False
 ALLOWED_HOSTS=.localhost,127.0.0.1
 DATABASE_URL={postgres://USER:PASSWORD@HOST:PORT/NAME}
 ```
