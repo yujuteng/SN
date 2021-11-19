@@ -4,7 +4,7 @@
     |-- manage.py
     |-- requirements.txt
     |-- .env.example
-    |-- .gitignore
+	|-- .env.swp
     |-- filter
     |   |-- __init__.py
     |   |-- admin.py
@@ -38,7 +38,7 @@ python manage.py migrate
 - `django-cors-headers`: 允許前端port3000的請求
 
 
-### 模型定義 filter/models.py
+### 模型定義範例 filter/models.py
 ```
 class Mrt_Pos(models.Model):
     name = models.TextField(primary_key=True)
