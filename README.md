@@ -6,7 +6,7 @@
 ## 分工
 - 陳琳瑄 Front-end using ReactJS, Axios
 - 施懿修 Database of spot using python and postgreSQL
-- 沈姿雨 Database of air quality and weather station, MRT with their nearest stations, and updating database by python and postgreSqQL
+- 沈姿雨 Database of air quality and weather station, MRT with their nearest stations, and updating database by python and postgreSQL
 - 鄧鈺儒 Back-end using python and Django, database of MRT using python and postgreSQL
 
 ## Database
