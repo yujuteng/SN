@@ -6,7 +6,7 @@
 ## 分工
 - 陳琳瑄 Front-end using ReactJS, Axios
 - 施懿修 Database of spot (include schema design and data colleciton) using python and postgreSQL
-- 沈姿雨 自己打自己的Back-end using Django
+- 沈姿雨 Table of MRT stations and their nearest air quality and weather station, database of air quality and weather station , and updating database by python and postgreSqQL
 - 鄧鈺儒 Back-end using python and Django, Database of mrt (include schema design and data colleciton) using python and postgreSQL
 
 ## Database
@@ -90,7 +90,7 @@ copy .env.example .env
 
 ```shell
 SECRET_KEY={aaaaaaaaa}
-DEBUG=False
+DEBUG=True
 ALLOWED_HOSTS=.localhost,127.0.0.1
 DATABASE_URL={postgres://USER:PASSWORD@HOST:PORT/NAME}
 ```
