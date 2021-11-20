@@ -146,15 +146,13 @@ yarn start
 #### 電腦版
 <img width="1424" alt="StartPage" src="https://user-images.githubusercontent.com/72818070/142722824-c892fab3-9a6c-4967-bb86-aa7ae1463a5c.png">
 
-#### 手機版
+#### 電腦模擬手機版
+
+使用chrome開啟「開發人員工具」後點選Element/Consloe左側的圖案
+
+並將頁面左上角的長寬設定為450x800
 
 <img width="926" alt="截圖 2021-11-20 下午10 22 28" src="https://user-images.githubusercontent.com/72818070/142729843-d21fe6e1-1286-4174-8905-4c102174c918.png">
-
-##### 使用chrome開啟「開發人員工具」後點選Element/Consloe左側的圖案
-
-##### 並將頁面左上角的長寬設定為450x800
-
-<img width="375" alt="Phone_start_page" src="https://user-images.githubusercontent.com/72818070/142722851-e34f00f2-ab73-44bd-8d2e-7da80d12e30f.png">
 
 #### 查詢選單
 <img width="368" alt="選擇" src="https://user-images.githubusercontent.com/72818070/142722887-e65766c9-3727-4dc4-a34b-bb89d28e7575.png">
