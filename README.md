@@ -60,18 +60,30 @@ pip list
 ```
 ```
 Package             Version
-------------------- -------
+------------------- ---------
 asgiref             3.4.1
+certifi             2021.10.8
+charset-normalizer  2.0.7
 dj-database-url     0.5.0
 Django              3.2.6
 django-cors-headers 3.8.0
 djangorestframework 3.12.4
-pip                 21.3
-psycopg2            2.9.1
+idna                3.3
+numpy               1.17.3
+pandas              1.3.0
+pathlib             1.0.1
+pip                 21.3.1
+psycopg2-binary     2.9.1
+python-dateutil     2.8.2
 python-decouple     3.4
-pytz                2021.1
-setuptools          47.1.0
-sqlparse            0.4.1
+pytz                2021.3
+requests            2.26.0
+ruamel.yaml         0.17.17
+ruamel.yaml.clib    0.2.6
+setuptools          49.2.1
+six                 1.16.0
+sqlparse            0.4.2
+urllib3             1.26.7
 ```
 
 安裝完套件後複製 `.env.example` 的內容到 `.env`。
