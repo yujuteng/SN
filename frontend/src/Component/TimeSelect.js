@@ -12,15 +12,14 @@ const TimeSelect = ({setTime}) =>{
   }
   return (
     <Select
-    showSearch
-    onChange={handleChange}
-    style={{ width: 150 }}
-    defaultValue={"10 分鐘"}
-  >
-  {timesTable.map((time)=>{
-      return <Option value={time}>{"約 "+time + " 分鐘"}</Option>
-  })}
-  </Select>
+      onChange={handleChange}
+      style={{ width: 150 }}
+      defaultValue={"10 分鐘內"}
+    >
+    {timesTable.map((time)=>{
+        return <Option value={time}>{"約 "+time + " 分鐘內"}</Option>
+    })}
+    </Select>
   );
 }
 
