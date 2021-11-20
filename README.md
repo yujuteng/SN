@@ -107,6 +107,12 @@ ALLOWED_HOSTS=.localhost,127.0.0.1
 DATABASE_URL={postgres://USER:PASSWORD@HOST:PORT/NAME}
 ```
 
+至 `SN/backend/filter/views.py` 的第17行中修改連接資料庫的相關參數
+
+```
+conn = psycopg2.connect(database="SN", user="USERNAME", password="PASSWORD", host="127.0.0.1", port="5432")
+```
+
 最後，同步資料庫並啟動 backend server。
 
 ```shell
