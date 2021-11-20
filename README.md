@@ -70,7 +70,7 @@ django-cors-headers 3.8.0
 djangorestframework 3.12.4
 idna                3.3
 numpy               1.17.3
-pandas              1.3.0
+pandas              1.1.5
 pathlib             1.0.1
 pip                 21.3.1
 psycopg2-binary     2.9.1
@@ -157,11 +157,14 @@ yarn start
 #### 推薦景點
 即可獲得每十個景點一面的顯示畫面
 
-<img width="377" alt="showSuggest" src="https://user-images.githubusercontent.com/72818070/142723062-fd6ee792-1f24-4393-9203-e220e251f2ea.png">
+![Uploading 截圖 2021-11-20 下午9.56.47.png…]()
+
 
 1. 於右下角可切換頁數
 2. 左側景點文字若為藍色，表示可點按跳轉至其官網。
-3. 右側的更多，則是點按後出現景點照片、開放時間、地址、與景點介紹，
+3. 捷運站名後方的有色英文指的是此站所對應的線。
+4. 點選下方的「Restart」，可回到查詢頁面進行新的查詢。（無記憶上次查詢功能）
+5. 右側的更多，則是點按後出現景點照片、開放時間、地址、與景點介紹，
 
    若介紹過多則會在右側出現下拉滑動條。
    
@@ -170,11 +173,10 @@ yarn start
 <img width="374" alt="MoreInfo" src="https://user-images.githubusercontent.com/72818070/142723015-c501e331-6efe-4e75-95d7-d2b9790cdeac.png">
 
 #### 排序操作(僅限電腦版)
-由於版面配置因素，於手機版取消票價、時間、AQI、Tags等資訊，選擇性放置於電腦版面中。
+由於版面配置因素，於手機版取消票價、移動時間、AQI、溫度、Tags等資訊，選擇性放置於電腦版面中。
 
-<img width="1121" alt="截圖 2021-11-20 下午5 27 26" src="https://user-images.githubusercontent.com/72818070/142723092-14869cd7-e9ae-4c0f-bccd-fc2d31e882e8.png">
+<img width="1364" alt="截圖 2021-11-20 下午10 02 22" src="https://user-images.githubusercontent.com/72818070/142729105-70caba78-7b4a-4fc4-bae4-2ee3f31c9de5.png">
 
-1.  點選「票價、時間、AQI」欄位中右側的雙三角形，可對該欄數據進行升降冪的排序。
-2. 「Tag」則可以對Tag的數量進行排序。
-3. 點選「Restart」可回到查詢頁面進行新的查詢。
 
+1. 點選「票價、移動時間、AQI、溫度」欄位中右側的雙三角形，可對該欄數據進行升降冪的排序。
+2. 點選「Tag」欄位中右側的雙三角形，則可以對Tag的數量進行排序。
