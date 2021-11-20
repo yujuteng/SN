@@ -57,14 +57,14 @@ const columns = [
         // <>{mrtInfo.mrt}{mrtInfo.mrtLine.map(item=>{return (<font color = {colorSelect(item)}>{"  "+ MRTLineEnglishTransfer(item)}</font>) })}</>
 },
   {
-    title: '分鐘',
+    title: '移動時間',
     dataIndex: 'time',
     key: 'time',
     sorter: {
       compare: (a, b) => a.time - b.time,
     },
     responsive: ['md'],
-    render: text => <>{text}</>,
+    render: text => <>{text+" 分鐘"}</>,
   },
   {
     title: '票價',
