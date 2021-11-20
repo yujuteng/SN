@@ -14,7 +14,7 @@ import time
 # https://www.django-rest-framework.org/api-guide/status-codes/
 
 def db_update():
-    conn = psycopg2.connect(database="SN", user="qibao", password="Qingdiyu", host="127.0.0.1", port="5432")
+    conn = psycopg2.connect(database="SN", user="USERNAME", password="PASSWORD", host="127.0.0.1", port="5432")
     print("[6] Opened database successfully")
     cur = conn.cursor()
 
