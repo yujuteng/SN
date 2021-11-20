@@ -5,10 +5,123 @@ from rest_framework.response import Response
 from filter.models import Mrt_Station, Mrt_Line, Mrt_Pos, Mrt_Move, Air, Weather, Spot_Info, Spot_Loc, Spot_Tag
 from django.db.models import Q
 
+import requests
+import psycopg2
+import pandas as pd
+import numpy as np
+import time
+
 # https://www.django-rest-framework.org/api-guide/status-codes/
+
+def db_update():
+    conn = psycopg2.connect(database="SN", user="qibao", password="Qingdiyu", host="127.0.0.1", port="5432")
+    print("[6] Opened database successfully")
+    cur = conn.cursor()
+
+    header = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+    'Connection':'close'
+    }
+    r = requests.get("https://data.epa.gov.tw/api/v1/aqx_p_432?format=json&limit=100&api_key=39e7e545-e563-4395-ba6a-0aa7af4a078b", headers = header)
+    time.sleep(1)
+    astation = r.json()
+    Airstation = pd.DataFrame(astation['records']).filter(items=['SiteName','AQI','Status'])
+    Airstation = Airstation.rename(columns={"SiteName": "sid", "AQI": "aqi",'Status':"status"})
+    BTPAS=Airstation.copy()
+    r = requests.get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-1BFEDE3C-7DE9-4A8D-AAD0-34EAC563AD22&format=JSON", headers = header)
+    time.sleep(1)
+    wstation_p = r.json()
+    r = requests.get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=CWB-1BFEDE3C-7DE9-4A8D-AAD0-34EAC563AD22&format=JSON", headers = header)
+    time.sleep(1)
+    wstation_np = r.json()
+    WstationP = pd.DataFrame(wstation_p['records']['location']).filter(items=['stationId', 'weatherElement'])
+    WstationNP = pd.DataFrame(wstation_np['records']['location']).filter(items=['stationId', 'weatherElement'])
+
+    WstationP['temp']=0.0
+    WstationP['humd']=0.0
+    WstationP['weather']='-'
+    WstationNP['temp']=0.0
+    WstationNP['humd']=0.0
+    WstationNP['weather']=''
+
+
+    for i in range(len(WstationP['weatherElement'])):
+        WstationP.loc[i,'temp']=float(WstationP['weatherElement'][i][3]["elementValue"])
+        WstationP.loc[i,'humd']=float(WstationP['weatherElement'][i][4]["elementValue"])
+        WstationP.loc[i,'weather']=WstationP['weatherElement'][i][20]["elementValue"]
+
+    for i in range(len(WstationNP['weatherElement'])):
+        WstationNP.loc[i,'temp']=float(WstationNP['weatherElement'][i][3]["elementValue"])
+        WstationNP.loc[i,'humd']=float(WstationNP['weatherElement'][i][4]["elementValue"])
+        WstationNP.loc[i,'weather']="相對濕度：" + str(round(float(WstationNP['weatherElement'][i][4]["elementValue"])*100))+"%"
+
+    WstationP=WstationP.drop("weatherElement",axis=1)
+    WstationNP=WstationNP.drop("weatherElement",axis=1)
+    Wstation=pd.concat([WstationP,WstationNP],axis=0)
+    Wstation.reset_index(inplace=True, drop=True)
+    Wstation = Wstation.rename(columns={"stationId": "sid"})
+    #print(Wstation)
+    def update_air(aqi_v, status_s, site_now):
+        """ update vendor name based on the vendor id """
+        sql = """ UPDATE air_wea.air
+                    SET aqi=%s, status= %s
+                    WHERE sid = %s"""
+        #conn = None
+        updated_rows = 0
+        try:
+            cur.execute(sql, (aqi_v, status_s, site_now))
+            # get the number of updated rows
+            updated_rows = cur.rowcount
+            # Commit the changes to the database
+            conn.commit()
+        #   # Close communication with the PostgreSQL database
+        #   cur.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+    #  finally:
+    #      if conn is not None:
+    #          conn.close()
+
+        return updated_rows
+
+    def update_wea(temp_v, humd_v, weather_s, site_now):
+        """ update vendor name based on the vendor id """
+        sql = """ UPDATE air_wea.weather
+                    SET temp=%s,humd=%s,weather=%s
+                    WHERE sid = %s"""
+        #conn = None
+        updated_rows = 0
+        try:
+            cur.execute(sql, (temp_v, humd_v, weather_s, site_now))
+            # get the number of updated rows
+            updated_rows = cur.rowcount
+            # Commit the changes to the database
+            conn.commit()
+        #   # Close communication with the PostgreSQL database
+        #   cur.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+    #  finally:
+    #      if conn is not None:
+    #          conn.close()
+
+        return updated_rows
+    
+    for i in range(len(BTPAS)):
+        update_air(BTPAS.iloc[i]['aqi'], BTPAS.iloc[i]['status'], BTPAS.iloc[i]['sid'])
+        
+    for i in range(len(Wstation)):
+        update_wea(Wstation.iloc[i]['temp'], Wstation.iloc[i]['humd'], Wstation.iloc[i]['weather'], Wstation.iloc[i]['sid'])
+
+
+    print("[27]Operation done successfully")
+    conn.close()
+
+
 
 @api_view(['GET'])
 def station_list(request):
+    db_update()
     if request.method == 'GET':
         lines = Mrt_Line.objects.all()
         result = []
