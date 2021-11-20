@@ -1,9 +1,20 @@
-.detailInfo{
-    /* width: 500px; */
+.modalBox{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    width: 1200px;
+    flex-direction: column;
+}
+.detailInfo{
+    width: 300px;   
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    justify-content: top;
+}
+.detailBox{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 250px;
+    width: 310px;
 }
 .picUrl{
     padding-top: 20px;
@@ -11,10 +22,60 @@
     height: auto;
 }
 .Infowrapper{
-    width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: top;
     justify-content: top;
-    padding-left: 20px;
+    padding-top: 10px;
 }
+.cards-container{
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-wrap:wrap;
+}
+
+@media screen and (max-width: 600px) {
+    .InfoTable{
+        hidden: true;
+    }
+    .modalBox{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .detailInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: top;
+        justify-content: top;
+        margin: 0px;
+        padding: 0px;
+        width: 64vw;
+    }
+    .detailBox{
+        overflow-x: hidden;
+        overflow-y: scroll;
+        max-height: 30vh;
+        width: 66vw;
+    }
+    .Infowrapper{
+        width: 60vw;
+        max-height: 90vh;
+        padding-left: 0px;
+        padding-top: 10px;
+        flex-wrap:wrap;
+        align-items: flex-start;
+        justify-content: top;
+    }
+    .picUrl{
+        display: flex;
+        align-items: top;
+        justify-content: top;
+        padding: 0px;
+        width: 64vw;
+        height: auto;
+    }
+} 
+
