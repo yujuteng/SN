@@ -150,7 +150,7 @@ yarn start
 
 <img width="926" alt="截圖 2021-11-20 下午10 22 28" src="https://user-images.githubusercontent.com/72818070/142729843-d21fe6e1-1286-4174-8905-4c102174c918.png">
 
-##### 使用chrom開啟「開發人員工具」後點選Element/Consloe左側的圖案
+##### 使用chrome開啟「開發人員工具」後點選Element/Consloe左側的圖案
 
 ##### 並將頁面左上角的長寬設定為450x800
 
