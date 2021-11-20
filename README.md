@@ -143,11 +143,29 @@ yarn start
 #### Step 3. 開啟瀏覽器 
 一般情況會自動開啟瀏覽器，若沒有請手動開啟 http://127.0.0.1:3000/ ，看到以下畫面即代表成功開啟前端且前後端連接成功。
 
+#### 電腦版
+<img width="1424" alt="StartPage" src="https://user-images.githubusercontent.com/72818070/142722824-c892fab3-9a6c-4967-bb86-aa7ae1463a5c.png">
+#### 手機版
+<img width="375" alt="Phone_start_page" src="https://user-images.githubusercontent.com/72818070/142722851-e34f00f2-ab73-44bd-8d2e-7da80d12e30f.png">
+
 #### 查詢選單
+<img width="368" alt="選擇" src="https://user-images.githubusercontent.com/72818070/142722887-e65766c9-3727-4dc4-a34b-bb89d28e7575.png">
+透過選擇想要多久之內抵達、離自己最近的捷運站、是否接受轉乘以及旅遊景點分類標籤後，按下查詢。
 
 #### 推薦景點
+即可獲得每十個景點一面的顯示畫面
+<img width="377" alt="showSuggest" src="https://user-images.githubusercontent.com/72818070/142723062-fd6ee792-1f24-4393-9203-e220e251f2ea.png">
+1. 於右下角可切換頁數
+2. 左側景點文字若為藍色，表示可點按跳轉至其官網。
+3. 右側的更多，則是點按後出現景點照片、開放時間、地址、與景點介紹，
+   若介紹過多則會在右側出現下拉滑動條。
+   點按右下角的ok即可回到推薦景點畫面。
+<img width="374" alt="MoreInfo" src="https://user-images.githubusercontent.com/72818070/142723015-c501e331-6efe-4e75-95d7-d2b9790cdeac.png">
 
-#### 排序與細目
+#### 排序操作(僅限電腦版)
+由於版面配置因素，於手機版取消票價、時間、AQI、Tags等資訊，選擇性放置於電腦版面中。
 
-
+<img width="1121" alt="截圖 2021-11-20 下午5 27 26" src="https://user-images.githubusercontent.com/72818070/142723092-14869cd7-e9ae-4c0f-bccd-fc2d31e882e8.png">
+1. 點選「票價、時間、AQI」欄位中右側的雙三角形，可對該欄數據進行升降冪的排序。
+2. 「Tag」則可以對Tag的數量進行排序。
 
