@@ -12,7 +12,6 @@ const TransferSelect = ({setTransfer}) =>{
   }
   return (
       <Select
-        showSearch
         onChange={handleChange}
         style={{ width: 150 }}
         defaultValue={"在同一條線上"}
