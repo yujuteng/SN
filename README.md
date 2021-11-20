@@ -148,7 +148,7 @@ yarn start
 
 #### 電腦模擬手機版
 
-使用chrome開啟「開發人員工具」後點選Element/Consloe左側的圖案
+使用chrome開啟「開發人員工具」後點選Element/Console左側的圖案
 
 並將頁面左上角的長寬設定為450x800
 
